@@ -14,7 +14,7 @@ public class User extends Person {
         this.active=true;
         this.id = id;
     }
-
+    //Bug contraseña arreglado
     @Override
     public User register(){
         Scanner sc = new Scanner(System.in);
@@ -25,7 +25,6 @@ public class User extends Person {
 
         System.out.println("Please enter your password");
         password = sc.nextLine();
-
         checkP=checkPassword(password);
         while (!checkP){
             System.out.println("The password you entered is incorrect");
@@ -60,8 +59,8 @@ public class User extends Person {
 
     @Override
     public boolean checkDate(String date){
-        String regex = "[,\\.\\s]";
-        String[] myArray = date.split(regex);
+
+        String[] myArray = date.split("/");
         int element1 = Integer.parseInt(myArray[0]);
         int element2 = Integer.parseInt(myArray[1]);
         int element3 = Integer.parseInt(myArray[2]);
@@ -93,8 +92,9 @@ public class User extends Person {
     }
 
     @Override
+    //Regex más amplio. Acepta cualquier carácter especial
     public boolean checkPassword(String password){ //regex password
-        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?=\\S+$).{8,}";
         if(password.matches(pattern)){
             return true;
         }
