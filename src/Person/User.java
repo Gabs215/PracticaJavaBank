@@ -9,8 +9,8 @@ public class User extends Person {
     public String id = "";
     public ArrayList<BankAccount> bankAccounts = new ArrayList<>();
 
-    public User( String name, String password, String birthDate, String id) {
-        super(name, password, birthDate);
+    public User( String ID, String name, String password, String birthDate) {
+        super(ID, name, password, birthDate);
         this.active=true;
         this.id = id;
     }
