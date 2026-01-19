@@ -4,7 +4,7 @@ import Person.User;
 import java.util.Scanner;
 
 import java.util.ArrayList;
-/*fajsdfkasn*/
+/*Comentario de prueba*/
 public class AccessScreen {
     ArrayList<User> users = new ArrayList<User>();
     Scanner sc = new Scanner(System.in);
