@@ -6,11 +6,12 @@ import java.time.Year;
 import java.util.Scanner;
 
 public class Manager extends Person {
-    final int managerID;
-    public static int id =0;
+    int managerID;
+    public String ID;
+    public int id;
 
-    public Manager(String id, String name, String password, String birthDate, int managerID) {
-        super( name, password, birthDate);
+    public Manager(String ID, String name, String password, String birthDate, int managerID) {
+        super(ID, name, password, birthDate);
         this.managerID = managerID;
     }
 
@@ -24,7 +25,7 @@ public class Manager extends Person {
 
         System.out.println("Please enter your password");
         password = sc.nextLine();
-        checkPassword(password);
+        checkP=checkPassword(password);
         while (!checkP){
             System.out.println("The password you entered is incorrect");
             System.out.println("The password must contain:");
@@ -33,7 +34,7 @@ public class Manager extends Person {
             System.out.println("* 1 number");
             System.out.println("* 1 special character");
             password = sc.nextLine();
-            checkPassword(password);
+            checkP=checkPassword(password);
         }
 
         System.out.println("Please enter your birthdate (dd/mm/yyyy)");
@@ -47,7 +48,7 @@ public class Manager extends Person {
         }
         id += 1;
         String newId = createId(id);
-        User newUser = new User(name, password, birthdate, newId);
+        User newUser = new User(name, password, birthdate, newId, active);
         System.out.println("The register process has ended");
         System.out.println("Your data:");
         System.out.println("Name: " + name);

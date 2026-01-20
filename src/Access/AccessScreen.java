@@ -9,13 +9,14 @@ import java.util.ArrayList;
 /*Comentario de prueba*/
 /*Comentario de Pau*/
 public class AccessScreen {
+    Scanner sc = new Scanner(System.in);
+
     ArrayList<User> users = new ArrayList<User>();
     ArrayList<Employee> employees = new ArrayList<Employee>();
     ArrayList<Manager> managers = new ArrayList<Manager>();
 
-    Scanner sc = new Scanner(System.in);
     String id="";
-    User dummyUser = new User(null, null, null, null);
+    User dummyUser = new User(null, null, null, null, true);
     Employee dummyEmployee = new Employee (null, null, null, null, 0);
     Manager dummyManager = new Manager (null, null, null, null, 0);
 
@@ -47,6 +48,7 @@ public class AccessScreen {
 
     public void accountMenu(User currentUser){
         int option=0;
+        System.out.println("Menu User");
         System.out.println("Welcome " + currentUser.name);
         System.out.println("1. Create BankAccount");
         System.out.println("2. Make a deposit");
@@ -59,6 +61,73 @@ public class AccessScreen {
             switch (option){
                 case 1:
                   //bankAccount  newBA = new bankAccount(dummyBankAccount.getEntity(), dummyBankAccount.getOffice(),  dummyBankAccount.calcDC(), null, null, null);
+                    break;
+                case 2:
+
+
+
+                    login();
+                    break;
+                case 3:
+                    return;
+                case 4:
+                    return;
+                case 5:
+                    return;
+                case 6:
+                    return;
+            }
+        }
+    }
+    public void menuManager (Manager currentManager){
+        int option=0;
+        System.out.println("Menu Manager");
+        System.out.println("Welcome " + currentManager.name);
+        System.out.println("1. Create BankAccount");
+        System.out.println("2. Make a deposit");
+        System.out.println("3. Withdraw");
+        System.out.println("4. Transfer Money");
+        System.out.println("5. Recharge SIM card");
+        System.out.println("6. Log Out");
+        System.out.println("Please enter your numbered choice (1, 2, 3, 4, 5 or 6)");
+        while(option!=6){
+            switch (option){
+                case 1:
+                    //bankAccount  newBA = new bankAccount(dummyBankAccount.getEntity(), dummyBankAccount.getOffice(),  dummyBankAccount.calcDC(), null, null, null);
+                    break;
+                case 2:
+
+
+
+                    login();
+                    break;
+                case 3:
+                    return;
+                case 4:
+                    return;
+                case 5:
+                    return;
+                case 6:
+                    return;
+            }
+        }
+    }
+
+    public void menuEmployee (Employee currentEmployee){
+        int option=0;
+        System.out.println("Menu Employee");
+        System.out.println("Welcome " + currentEmployee.name);
+        System.out.println("1. Create BankAccount");
+        System.out.println("2. Make a deposit");
+        System.out.println("3. Withdraw");
+        System.out.println("4. Transfer Money");
+        System.out.println("5. Recharge SIM card");
+        System.out.println("6. Log Out");
+        System.out.println("Please enter your numbered choice (1, 2, 3, 4, 5 or 6)");
+        while(option!=6){
+            switch (option){
+                case 1:
+                    //bankAccount  newBA = new bankAccount(dummyBankAccount.getEntity(), dummyBankAccount.getOffice(),  dummyBankAccount.calcDC(), null, null, null);
                     break;
                 case 2:
 
@@ -133,8 +202,8 @@ public class AccessScreen {
                         sc.nextLine();
                         id = sc.nextLine();
                         Manager currentManager =  null;
-                        for (int i = 0; i < users.size(); i++) {
-                            if(users.get(i).id.equals(id)){
+                        for (int i = 0; i < managers.size(); i++) {
+                            if(managers.get(i).ID.equals(id)){
                                 currentManager =  managers.get(i);
                             }
                         }
@@ -153,14 +222,14 @@ public class AccessScreen {
                                     String pass = sc.nextLine();
                                     if(pass.equals(currentManager.password)){
                                         System.out.println("You have successfully logged in");
-                                        accountMenu(currentUser);
+                                        menuManager(currentManager);
                                     }
                                     else{
                                         System.out.println("Wrong password, please try again");
                                         tries++;
                                         if(tries == 3){
                                             System.out.println("You have failed to log in, you account has been blocked.\n Please contact a system admin to resolve this issue.");
-                                            currentUser.active = false;
+                                            currentManager.active = false;
                                         }
                                     }
                                 }
@@ -168,7 +237,48 @@ public class AccessScreen {
                             }
 
                         }
+                    break;
+                        case 3:
+                            System.out.println("Please enter employee id: ");
+                            sc.nextLine();
+                            id = sc.nextLine();
+                            Employee currentEmployee =  null;
+                            for (int i = 0; i < employees.size(); i++) {
+                                if(employees.get(i).ID.equals(id)){
+                                    currentEmployee =  employees.get(i);
+                                }
+                            }
+                            if (currentEmployee == null){
+                                System.out.println("Stated id is not found, please enter a valid id");
+                                return;
+                            }
+                            else{
+                                if(!currentEmployee.active){
+                                    System.out.println("The account associated with this id is blocked.\n Contact a system admin for more information.");
+                                }
+                                else{
+                                    int tries = 0;
+                                    while (tries != 3){
+                                        System.out.println("Please enter password: ");
+                                        String pass = sc.nextLine();
+                                        if(pass.equals(currentEmployee.password)){
+                                            System.out.println("You have successfully logged in");
+                                            menuEmployee(currentEmployee);
+                                        }
+                                        else{
+                                            System.out.println("Wrong password, please try again");
+                                            tries++;
+                                            if(tries == 3){
+                                                System.out.println("You have failed to log in, you account has been blocked.\n Please contact a system admin to resolve this issue.");
+                                                currentEmployee.active = false;
+                                            }
+                                        }
+                                    }
 
+                                }
+
+                            }
+                            break;
             }
         }
 

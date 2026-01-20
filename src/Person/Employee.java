@@ -6,11 +6,10 @@ import java.time.Year;
 import java.util.Scanner;
 
 public class Employee extends Person {
-    final int employeeId;
-    public static int id =0;
-
-    public Employee(String id, String name, String password, String birthDate, int employeeId) {
-        super( name, password, birthDate);
+    int employeeId;
+    public String ID;
+    public Employee(String ID, String name, String password, String birthDate, int employeeId) {
+        super(ID, name, password, birthDate);
         this.employeeId = employeeId;
     }
 
@@ -45,9 +44,9 @@ public class Employee extends Person {
             birthdate = sc.nextLine();
             checkD = checkDate(birthdate);
         }
-         id += 1;
-        String newId = createId(id);
-        User newUser = new User(name, password, birthdate, newId);
+        ID += 1;
+        String newId = createId(ID);
+        User newUser = new User(name, password, birthdate, newId, active);
         System.out.println("The register process has ended");
         System.out.println("Your data:");
         System.out.println("Name: " + name);
