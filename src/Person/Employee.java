@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Employee extends Person {
     int employeeId;
+    public int id;
     public String ID;
     public Employee(String ID, String name, String password, String birthDate, int employeeId) {
         super(ID, name, password, birthDate);
@@ -44,8 +45,8 @@ public class Employee extends Person {
             birthdate = sc.nextLine();
             checkD = checkDate(birthdate);
         }
-        ID += 1;
-        String newId = createId(ID);
+        id += 1;
+        String newId = createId(id);
         User newUser = new User(name, password, birthdate, newId, active);
         System.out.println("The register process has ended");
         System.out.println("Your data:");

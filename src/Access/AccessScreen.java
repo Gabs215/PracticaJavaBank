@@ -46,7 +46,7 @@ public class AccessScreen {
 
     }
 
-    public void accountMenu(User currentUser){
+    public void MenuUser(User currentUser){
         int option=0;
         System.out.println("Menu User");
         System.out.println("Welcome " + currentUser.name);
@@ -181,7 +181,7 @@ public class AccessScreen {
                                 String pass = sc.nextLine();
                                 if(pass.equals(currentUser.password)){
                                     System.out.println("You have successfully logged in");
-                                    accountMenu(currentUser);
+                                    MenuUser(currentUser);
                                 }
                                 else{
                                     System.out.println("Wrong password, please try again");
