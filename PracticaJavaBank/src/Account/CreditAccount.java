@@ -6,7 +6,7 @@ import Person.User;
  * Representa una cuenta de crédito en el sistema bancario.
  * Este tipo de cuenta permite al usuario utilizar crédito con un límite establecido
  * y está sujeta a un porcentaje de interés sobre el crédito utilizado.
- * 
+ * g
  * @version 1.0
  * @see BankAccount
  */
