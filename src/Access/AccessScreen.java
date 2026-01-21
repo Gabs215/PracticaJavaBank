@@ -23,24 +23,24 @@ public class AccessScreen {
     public void menu(){
 
         int option=0;
-        while(option!=3){
+        while(option!=2){
+            /*De momento he dejado el menu de Incio sin variaciones, lo suyo es modificarlo para solo dejar hacerl login, y cuando se corrobore
+            * que se trata de un employee o manager, deja hacer cuentas de banco */
+            /*Es por lo que los menus son un copia y pega del menu users*/
             System.out.println("Welcome to JavaBank ");
-            System.out.println("1. Create Account");
-            System.out.println("2. Log In");
-            System.out.println("3. Close Application");
-            System.out.println("Please enter your numbered choice (1, 2 or 3)");
+            System.out.println("1. Log In");
+            System.out.println("2. Close Application");
+            System.out.println("Please enter your numbered choice (1 or 2)");
             option = sc.nextInt();
             switch (option){
                 case 1:
-                    User newUser = dummyUser.register();
-                    users.add(newUser);
-
-                    break;
-                case 2:
+                    /*Esto queda eliminado de momento*/
+                    /*User newUser = dummyUser.register();
+                    users.add(newUser);*/
                     login();
                     break;
-                case 3:
-                    return;
+                case 2:
+                    break;
             }
         }
 
@@ -50,22 +50,18 @@ public class AccessScreen {
         int option=0;
         System.out.println("Menu User");
         System.out.println("Welcome " + currentUser.name);
-        System.out.println("1. Create BankAccount");
-        System.out.println("2. Make a deposit");
-        System.out.println("3. Withdraw");
-        System.out.println("4. Transfer Money");
-        System.out.println("5. Recharge SIM card");
-        System.out.println("6. Log Out");
-        System.out.println("Please enter your numbered choice (1, 2, 3, 4, 5 or 6)");
-        while(option!=6){
+        System.out.println("1. Make a deposit");
+        System.out.println("2. Withdraw");
+        System.out.println("3. Transfer Money");
+        System.out.println("4. Recharge SIM card");
+        System.out.println("5. Log Out");
+        System.out.println("Please enter your numbered choice (1, 2, 3, 4 or 5)");
+        while(option!=5){
             switch (option){
                 case 1:
                   //bankAccount  newBA = new bankAccount(dummyBankAccount.getEntity(), dummyBankAccount.getOffice(),  dummyBankAccount.calcDC(), null, null, null);
                     break;
                 case 2:
-
-
-
                     login();
                     break;
                 case 3:
@@ -73,8 +69,6 @@ public class AccessScreen {
                 case 4:
                     return;
                 case 5:
-                    return;
-                case 6:
                     return;
             }
         }
@@ -149,11 +143,12 @@ public class AccessScreen {
 
     public void login(){
         int option=0;
-        while(option!=3) {
+        while(option!=4) {
             System.out.println("Please select your profile:");
             System.out.println("1. User");
             System.out.println("2. Manager");
             System.out.println("3. Employee");
+            System.out.println("4. Log Out");
             option = sc.nextInt();
             switch (option) {
                 case 1:
@@ -279,6 +274,9 @@ public class AccessScreen {
 
                             }
                             break;
+                case 4:
+                    menu();
+                    break;
             }
         }
 
